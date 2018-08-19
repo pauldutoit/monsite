@@ -5,6 +5,8 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Article;
+use Symfony\Component\HttpFoundation\Request;
+use Doctrine\Common\Persistence\ObjectManager;
 
 class ArticleController extends AbstractController
 {
@@ -32,12 +34,39 @@ class ArticleController extends AbstractController
     }
 
      /**
-     * @Route("/create", name="create_article")
+     * @Route("/article/new", name="create_article")
+     * @Route("/article/{id}/edit", name="edit_article")
      */
-    public function create()
+    public function form(Article $article = null, Request $request, ObjectManager $manager)
     {
+        //$article = new Article();
+
+        if(!$article){
+            $article = new Article();
+        }
+
+        $form = $this->createFormBuilder($article)
+            ->add('title')
+            ->add('content')
+            ->add('image')
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            if(!$article->getId()){
+            $article->setCreatedAt(new \DateTime());
+            }
+
+            $manager->persist($article);
+            $manager->flush();
+
+            return $this->redirectToRoute('article_show', ['id' => $article->getId()]);
+        }
+
         return $this->render('article/create.html.twig', [
-            'controller_name' => 'ArticleController',
+            'formArticle' => $form->createView(),
+            'editMode' => $article->getId() !== null
         ]);
     }
 
