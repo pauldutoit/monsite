@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<article style="margin:10px;">
+<h2>{{ article.title }}</h2>
+<div class='metadata'>Ecrit le {{ article.createdAt | date('d/m/Y')}} à {{ article.createdAt | date('H:i')}}<div>
+<div class='content'>
+<img src="{{ article.image }}" alt="{{ article.image }}">
+<p>{{ article.content }}</p>
+<hr>
+<p>{{ article.content }}</p>
+</div>
+</article>
+
+{% endblock %}
