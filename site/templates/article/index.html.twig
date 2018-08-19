@@ -8,8 +8,14 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
-Hola !
+{% for article in articles %}
+<section class='articles'>
+<h2>{{ article.title }}<h2>
+<div class='metadata'><div>
+<div class='content'>
+<img src="{{ article.image }}" alt="{{ article.image }}">
 </div>
+</section>
+{% endfor %}
   
 {% endblock %}
