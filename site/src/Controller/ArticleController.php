@@ -93,34 +93,4 @@ class ArticleController extends AbstractController
         return $this->render('article/about.html.twig');
     }
 
-      /**
-     * @Route("/connexion", name="connexion")
-     */
-    public function connexion(Request $request)
-    {   
-
-        $user = new User();
-       // $repo = $this->getDoctrine()->getRepository(User::class);
-
-        $formUser = $this->createFormBuilder($user)
-            ->add('email')
-            ->add('password')
-            ->getForm();
-
-        // $form->handleRequest($request);
-
-        // if($form->isSubmitted() && $form->isValid()){
-
-
-        //     $manager->persist($article);
-        //     $manager->flush();
-
-        //     return $this->redirectToRoute('article_show', ['id' => $article->getId()]);
-        // }
-
-
-        return $this->render('article/connexion.html.twig',[
-            'formUser' => $formUser->createView()
-        ]);
-    }
 }
