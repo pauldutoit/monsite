@@ -26,6 +26,11 @@ class Article
      */
     private $content;
 
+     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $description;
+
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -60,6 +65,18 @@ class Article
     public function setTitle(string $title): self
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
 
         return $this;
     }

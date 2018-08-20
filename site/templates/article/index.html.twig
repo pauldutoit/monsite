@@ -8,17 +8,16 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 
 </style>
-<div>
+
 {% for article in articles %}
-<section class='articles' style="margin:10px;">
-<h2>{{ article.title }}</h2>
-<div class='metadata'>Ecrit le {{ article.createdAt | date('d/m/Y')}} à {{ article.createdAt | date('H:i')}}<div>
-<div class='form_control'>
-<img src="{{ article.image }}" alt="{{ article.image }}">
-<p>{{ article.content }}</p>
-<a href="{{ path('article_show',{'id': article.id})}}" class="btn btn-primary">Lire la suite</a>
+<div class="d-inline-block">
+    <section class='articles' style="margin:10px;">
+        <h2>{{ article.title }}</h2>
+        <div class='metadata'>Ecrit le {{ article.createdAt | date('d/m/Y')}} à {{ article.createdAt | date('H:i')}}<div>
+        <img src="{{ article.image }}" alt="{{ article.image }}">
+        <p>{{ article.description }}</p>
+        <a href="{{ path('article_show',{'id': article.id})}}" class="btn btn-primary">Lire la suite</a>
+    </section>
 </div>
-</section>
-{% endfor %}
-</div>  
+{% endfor %}  
 {% endblock %}

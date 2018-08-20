@@ -7,9 +7,9 @@
 <div class='metadata'>Ecrit le {{ article.createdAt | date('d/m/Y')}} à {{ article.createdAt | date('H:i')}}<div>
 <div class='content'>
 <img src="{{ article.image }}" alt="{{ article.image }}">
-<p>{{ article.content }}</p>
+<p>{{ article.description }}</p>
 <hr>
-<p>{{ article.content }}</p>
+<p>{{ article.content | raw }}</p>
 </div>
 </article>
 
