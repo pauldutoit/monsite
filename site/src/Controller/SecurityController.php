@@ -29,7 +29,9 @@ class SecurityController extends AbstractController
         $hash = $encoder->encodePassword($user, $user->getPassword());
         $user->setPassword($hash);
         $manager->persist($user);
-        $manager->flush(); 
+        $manager->flush();
+        
+        return $this->redirectToRoute('security_login');
     }
 
 
@@ -38,4 +40,19 @@ class SecurityController extends AbstractController
     ]);
 
    }
+/**
+ * @Route("/connexion", name="security_login")
+ */
+   public function login(){
+
+    return $this->render('security/login.html.twig');
+
+   }
+
+
+   /**
+    * @Route("/deconnexion", name="security_logout")
+    */
+
+    public function logout(){}
 }

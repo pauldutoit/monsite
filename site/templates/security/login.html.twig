@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<style>
+        .example-wrapper { margin: 1em auto; max-width: 600px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+        .content{ margin: 10px;} 
+</style>
+
+    <div class="example-wrapper">
+    <h1 style="text-align:center;">Se connecter</h1>
+    <form action="{{ path('security_login') }}" method="post" >
+
+        <div class="form-group">
+
+            <input placeholder="Adresse Email ..." required name="_username" type="text" class="form-control">
+            </br>
+            <input placeholder="Mot de Passe ..." required name="_password" type="password" class="form-control">
+
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-success">Connexion !</button>
+        </div>
+    </div>    
+
+    </form>
+
+{% endblock %}
